@@ -210,6 +210,11 @@ footer .container {
   color: #999999;
 }
 
+.login-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 900px) {
