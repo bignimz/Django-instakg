@@ -124,6 +124,7 @@
       </div>
 
       <div class="posts">
+        {% for post in post_items %}
         <article class="post">
           <div class="post__header">
             <div class="post__profile">
@@ -131,7 +132,7 @@
                 <img src="" alt="User Picture" />
               </a>
 
-              <a href="" class="post__user"></a>
+              <a href="" class="post__user"> {{post.user.username}} </a>
             </div>
 
             <button class="post__more-options">
@@ -154,7 +155,7 @@
               <a href=""
                 ><img
                   class="post__media"
-                  src=""
+                  src="{{post.picture.url}}"
                   alt="Post Content"
                   style="width: 700px; height: 348px; object-fit: cover"
               /></a>
@@ -240,54 +241,46 @@
 
             <div class="post__infos">
               <div class="post__likes">
-                <a href="#" class="post__likes-avatar">
-                  <!--                                        <img src="assets1/default-user.png" alt="User Picture">-->
-                </a>
+                <!-- <a href="#" class="post__likes-avatar">
+                  <img src="assets1/default-user.png" alt="User Picture">
+                </a> -->
 
-                <!--                                    <span>Liked by <a class="post__name&#45;&#45;underline" href="#">user123</a> and <a href="#">73 others</a></span>-->
+                <!-- <span>Liked by <a class="post__name&#45;&#45;underline" href="#">user123</a> and <a href="#">73 others</a></span>-->
                 <span>
+                  {{post.likes}}
                   <a class="post__name--underline" href="#">likes</a>
-                  <a href="#"></a
-                ></span>
+                  <a href="#"></a></span
+                ><br />
               </div>
+
+              <span>
+                {% for tag in post.tag.all %}
+                <a
+                  href="{{tag.get_absolute.url}}"
+                  style="text-decoration: none; color: #333"
+                  >#{{tag}},
+                </a>
+                {% endfor %}
+              </span>
 
               <div class="post__description">
                 <span>
-                  <a class="post__name--underline" href="#"><b>@</b></a>
+                  <a class="post__name--underline" href="#"
+                    ><b>@{{post.user.username}}</b></a
+                  >
+                  {{post.caption}}
                 </span>
               </div>
               <p style="font-size: 13px">
                 <a href="" style="text-decoration: none"> </a>
               </p>
-              <span class="post__date-time"></span>
+              <span class="post__date-time"
+                >{{post.posted|date:"d, M, Y"}}</span
+              >
             </div>
           </div>
         </article>
-
-        <div class="side-menu__suggestions-content" style="padding: 0 40px">
-          <div class="side-menu__suggestions-header">
-            <h2>Suggestions for You</h2>
-            <button>See All</button>
-          </div>
-
-          <div class="side-menu__suggestion">
-            <a href="" class="side-menu__suggestion-avatar">
-              <img src="" alt="User Picture" />
-            </a>
-
-            <div class="side-menu__suggestion-info">
-              <a href=""></a>
-
-              <a href=""></a>
-
-              <span>@</span>
-            </div>
-
-            <a href="" class="side-menu__suggestion-button">Follow</a>
-
-            <a href="" class="side-menu__suggestion-button">Follow</a>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
 
