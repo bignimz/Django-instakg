@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from post.models import Tag, Post, Follow, Stream
+from django.http import HttpResponseRedirect
+from post.models import Tag, Post, Follow, Stream, Likes
 from django.contrib.auth.decorators import login_required
 from post.forms import PostForm
+from django.urls import reverse
 
 def index(request):
     # Getting the instance of the current logged in user
@@ -48,3 +50,29 @@ def post_detail(request, post_id):
     context = {'post': post}
 
     return render(request, 'post_details.html', context)
+
+def tags(request, tag_slug):
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    posts = Post.objects.filter(tag=tag).order_by('-posted')
+
+    context = {'tag': tag, 'posts': posts}
+    return render(request, 'tags.html', context)
+
+
+def like(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    current_likes = post.likes
+    liked = Likes.objects.filter(user=user, post=post).count()
+
+    if not liked:
+        # liked = Likes.objects.create(user=user, post=post)
+        current_likes = current_likes + 1
+    else:
+        # liked = Likes.objects.filter(user=user, post=post).delete()
+        current_likes = current_likes - 1
+        
+    post.likes = current_likes
+    post.save()
+
+    return HttpResponseRedirect(reverse('post-details', args=[post_id]))
