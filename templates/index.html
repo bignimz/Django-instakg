@@ -152,21 +152,19 @@
 
           <div class="post__content">
             <div class="post__medias">
-              <a href="{% url 'post_detail' post.id %}"
+              <a href="{% url 'post-details' post.id %}"
                 ><img
                   class="post__media"
                   src="{{post.picture.url}}"
                   alt="Post Content"
                   style="width: 700px; height: 348px; object-fit: cover"
               /></a>
-              <!--                                <img class="post__media" src="{% static 'assets1/insta-clone.png' %}" alt="Post Content">-->
-              <!--                                <img class="post__media" src="{% static 'assets1/insta-clone.png' %}" alt="Post Content">-->
             </div>
           </div>
 
           <div class="post__footer">
             <div class="post__buttons">
-              <a href="" class="post__button">
+              <a href="{% url 'like' post.id %}" class="post__button">
                 <svg
                   width="24"
                   height="24"
