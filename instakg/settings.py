@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Custom Apps
     'post',
+    'user_auth',
     # 'crispy_forms',
 ]
 
