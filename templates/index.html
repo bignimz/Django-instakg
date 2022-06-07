@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<main class="main-container">
+<main class="container">
   <section class="content-container">
     <div class="content">
       <div class="stories">
@@ -28,90 +28,6 @@
             </div>
             <span class="story__user">@</span>
           </button>
-          <button class="story">
-            <div class="story__avatar">
-              <div class="story__border">
-                <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                  <circle r="31" cy="32" cx="32" />
-                </svg>
-              </div>
-              <div class="story__picture">
-                <img src="{% static 'assets2/images/6.jpg' %}" />
-              </div>
-            </div>
-            <span class="story__user">@destiny</span>
-          </button>
-          <button class="story">
-            <div class="story__avatar">
-              <div class="story__border">
-                <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                  <circle r="31" cy="32" cx="32" />
-                </svg>
-              </div>
-              <div class="story__picture">
-                <img src="{% static 'assets2/images/1.jpg' %}" />
-              </div>
-            </div>
-            <span class="story__user">@james</span>
-          </button>
-          <button class="story">
-            <div class="story__avatar">
-              <div class="story__border">
-                <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                  <circle r="31" cy="32" cx="32" />
-                </svg>
-              </div>
-              <div class="story__picture">
-                <img
-                  src="{% static 'assets2/images/2.jpg' %}"
-                  style="width: 100px; height: 100px; object-fit: cover"
-                />
-              </div>
-            </div>
-            <span class="story__user">@samuel</span>
-          </button>
-          <button class="story">
-            <div class="story__avatar">
-              <div class="story__border">
-                <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                  <circle r="31" cy="32" cx="32" />
-                </svg>
-              </div>
-              <div class="story__picture">
-                <img
-                  src="{% static 'assets2/images/5.jpg' %}"
-                  style="width: 100px; height: 100px; object-fit: cover"
-                />
-              </div>
-            </div>
-            <span class="story__user">@princewill</span>
-          </button>
-          <button class="story">
-            <div class="story__avatar">
-              <div class="story__border">
-                <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                  <circle r="31" cy="32" cx="32" />
-                </svg>
-              </div>
-              <div class="story__picture">
-                <img src="{% static 'assets2/images/7.png' %}" />
-              </div>
-            </div>
-            <span class="story__user">@robert</span>
-          </button>
-          <button class="story">
-            <div class="story__avatar">
-              <div class="story__border">
-                <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                  <circle r="31" cy="32" cx="32" />
-                </svg>
-              </div>
-              <div class="story__picture">
-                <img src="{% static 'assets2/images/4.jpg' %}" />
-              </div>
-            </div>
-            <span class="story__user">@destiny</span>
-          </button>
         </div>
         <button class="stories__right-button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -129,7 +45,7 @@
           <div class="post__header">
             <div class="post__profile">
               <a href="" class="post__avatar">
-                <img src="" alt="User Picture" />
+                <img src="{% static 'default.png' %}" alt="User Picture" />
               </a>
 
               <a href="" class="post__user"> {{post.user.username}} </a>
@@ -272,8 +188,8 @@
               <p style="font-size: 13px">
                 <a href="" style="text-decoration: none"> </a>
               </p>
-              <span class="post__date-time"
-                >{{post.posted|date:"d, M, Y"}}</span
+              <span class="post__date-time text-capitalize"
+                >Posted: {{post.posted|timesince}} ago</span
               >
             </div>
           </div>
@@ -284,11 +200,7 @@
 
     <section class="side-menu">
       <div class="side-menu__user-profile">
-        <a
-          href="https://github.com/leocosta1"
-          target="_blank"
-          class="side-menu__user-avatar"
-        >
+        <a href="" target="_blank" class="side-menu__user-avatar">
           <img src="" alt="User Picture" />
         </a>
         <div class="side-menu__user-info">
@@ -296,7 +208,7 @@
 
           <a href=""></a>
 
-          <span>@</span>
+          <span>@amara</span>
         </div>
         <a class="side-menu__user-button">View Profile</a>
       </div>
@@ -304,12 +216,13 @@
       <div class="side-menu__suggestions-section">
         <div class="side-menu__suggestions-header">
           <h2>Suggestions for You</h2>
-          <button>See All</button>
+          <br />
+          <button class="btn btn-primary">See All</button>
         </div>
         <div class="side-menu__suggestions-content">
           <div class="side-menu__suggestion">
             <a href="" class="side-menu__suggestion-avatar">
-              <img src="" alt="User Picture" />
+              <img src="{% static 'default.png' %}" alt="User Picture" />
             </a>
 
             <div class="side-menu__suggestion-info">
@@ -319,8 +232,6 @@
 
               <span>@</span>
             </div>
-
-            <a href="" class="side-menu__suggestion-button">Follow</a>
 
             <a href="" class="side-menu__suggestion-button">Follow</a>
           </div>
