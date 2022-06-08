@@ -25,7 +25,7 @@ SECRET_KEY = 'nc@$&l#(y7*0&8bdo80g9u7d$+eg*2jou@g7a&_vohj1)r*3@f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['instakg.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
